@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 
+def DEFAULT_PLAY_SERVICES_VERSION = "15.0.0"
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
@@ -16,7 +18,9 @@ android {
     }
 }
 
+def supportVersion = rootProject.hasProperty('googlePlayServicesADVersion') ? rootProject.googlePlayServicesADVersion : DEFAULT_PLAY_SERVICES_VERSION
+
 dependencies {
     compile 'com.facebook.react:react-native:+'
-    compile 'com.google.android.gms:play-services-ads:+'
+    compile "com.google.android.gms:play-services-ads:${supportVersion}"
 }
